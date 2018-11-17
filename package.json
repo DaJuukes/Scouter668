@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/test.js --no-timeouts --exit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "mongoose": "^5.3.12",
     "morgan": "^1.9.1"
@@ -19,6 +22,7 @@
     "eslint": "^5.9.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0"

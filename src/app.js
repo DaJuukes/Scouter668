@@ -32,7 +32,7 @@ const errorMiddleware = (err, req, res, next) => {
 }
 
 app.use(cors())
-require('./src/controllers')(app)
+require('./controllers')(app)
 app.use(errorMiddleware)
 
 module.exports = app

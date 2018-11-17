@@ -1,6 +1,5 @@
 module.exports = function (r) {
   let f = require('fs').readdirSync(`./src/controllers`)
-  console.log(f)
   f.forEach((f) => {
     if (f === 'index.js') return
     try {

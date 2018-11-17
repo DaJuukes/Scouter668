@@ -19,7 +19,7 @@ router.post(`/`, wrap(async function (req, res, next) {
     let user = new models.User({ username, password })
 
     user.save((err, doc) => {
-      if (err) return res.status(401).send({ error: err.message }).end()
+      if (err) return res.status(401).end(err.message)
       else return res.status(200).end('Success')
     })
   }

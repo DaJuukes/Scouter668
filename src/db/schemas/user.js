@@ -13,4 +13,12 @@ let s = {
   })
 }
 
+// TODO ADD HASHING
+
+s.schema.statics.validateData = function (username, password) {
+  if (username.length === 0 || username.length > 10) return 'Username length invalid'
+  else if (password.length < 1 || password.length > 15) return 'Password length invalid'
+  else return null
+}
+
 module.exports = mongoose.model(s.name, s.schema)

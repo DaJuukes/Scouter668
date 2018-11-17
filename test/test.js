@@ -20,14 +20,16 @@ const wipeDatabase = async () => {
 
 const files = require('./groups')(chai, server)
 
-before(async () => {
-  await setupDatabase()
-})
+describe('Unit tests', () => {
+  before(async () => {
+    await setupDatabase()
+  })
 
-after(async () => {
-  await wipeDatabase()
-})
+  after(async () => {
+    await wipeDatabase()
+  })
 
-for (let file of files) {
-  file(chai, server, models)
-}
+  for (let file of files) {
+    file(chai, server, models)
+  }
+})

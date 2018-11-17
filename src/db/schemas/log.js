@@ -7,7 +7,8 @@ let s = {
       type: Number
     },
     author: {
-      type: mongoose.Schema.Types.ObjectId
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
     },
     text: {
       type: String

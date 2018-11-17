@@ -13,13 +13,13 @@ router.post(`/`, wrap(async function (req, res, next) {
     return res.status(401).end('Missing credentials')
   } else {
     if (await models.User.findOne({ username })) {
-      return res.status(500).send({ error: 'User already exists' }).end()
+      return res.status(401).end('User already exists')
     }
 
     let user = new models.User({ username, password })
 
     user.save((err, doc) => {
-      if (err) return res.status(500).send({ error: err.message }).end()
+      if (err) return res.status(401).send({ error: err.message }).end()
       else return res.status(200).end('Success')
     })
   }

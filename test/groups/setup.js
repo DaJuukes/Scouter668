@@ -36,7 +36,6 @@ module.exports = function (chai, server, models) {
         let stub1 = sinon.stub(console, 'log')
         const setupApp = rewire('../../src/app')
 
-
         let err = { stack: 'test' }
         let pe = 'test'
 

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const sinon = require('sinon')
+const rewire = require('rewire')
 
 module.exports = function (chai, server, models) {
   describe('Setup', () => {
@@ -28,6 +29,29 @@ module.exports = function (chai, server, models) {
         setupDatabase(mongoose)
         mock.restore()
         mock.verify()
+      })
+    })
+    describe('App setup', () => {
+      it('should handle a promise rejeciton', (done) => {
+        let stub1 = sinon.stub(console, 'log')
+        const setupApp = rewire('../../src/app')
+        stub1.restore()
+
+        let err = { stack: 'test' }
+        let pe = 'test'
+
+        let mock = sinon.mock(console)
+        mock.expects('error').atLeast(1)
+
+        setupApp.__set__('console', console)
+
+        setupApp()
+
+        process.emit('unhandledRejection', err, pe)
+
+        mock.verify()
+        mock.restore()
+        done()
       })
     })
   })

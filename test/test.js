@@ -6,7 +6,7 @@ let dotenv = require('dotenv')
 
 dotenv.config({ path: './test/test.env' })
 
-let server = require('../src/app.js')
+let server = require('../src/app.js')()
 const mongoose = require('mongoose')
 let setupDatabase = require('../src/db/setup')
 

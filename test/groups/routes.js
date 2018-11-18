@@ -8,6 +8,7 @@ module.exports = function (chai, server, models) {
         it('should catch the error thrown', (done) => {
           let stub = sinon.stub(console, 'log')
           let newServer = rewire('../../src/app')
+          let app = newServer()
           stub.restore()
 
           let mock = sinon.mock(console)
@@ -15,7 +16,7 @@ module.exports = function (chai, server, models) {
 
           newServer.__set__('console', console)
 
-          chai.request(newServer)
+          chai.request(app)
             .post('/errortest')
             .end((err, res) => {
               mock.verify()

@@ -1,20 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-const morgan = require('morgan')
-
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason.stack)
-  // application specific logging, throwing an error, or other logic here
-})
-
 const app = express()
 
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('combined'))
-}
-
-// Allows use to catch exceptions inside promises when used in express controllers
-// see https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/
 global.wrap = fn => (...args) => {
   const functionReturnVal = fn(...args)
 
@@ -31,8 +18,19 @@ const errorMiddleware = (err, req, res, next) => {
   next(err)
 }
 
-app.use(cors())
-require('./controllers')(app)
-app.use(errorMiddleware)
+module.exports = function () {
+  process.on('unhandledRejection', (reason, p) => {
+    console.log(reason.stack, p)
+    console.error('Unhandled Rejection at: Promise' + p + 'reason:' + reason.stack)
+  // application specific logging, throwing an error, or other logic here
+  })
 
-module.exports = app
+  // Allows use to catch exceptions inside promises when used in express controllers
+  // see https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/
+
+  app.use(cors())
+  require('./controllers')(app)
+  app.use(errorMiddleware)
+
+  return app
+}

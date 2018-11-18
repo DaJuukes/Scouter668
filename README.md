@@ -1,8 +1,8 @@
 # Scouter668
-[![Build Status](https://travis-ci.org/DaJuukes/Team668Scouter.svg?branch=master)](https://travis-ci.org/DaJuukes/Team668Scouter)
-[![Dependencies](https://david-dm.org/DaJuukes/Team668Scouter.svg)](https://travis-ci.org/DaJuukes/Team668Scouter)
+[![Build Status](https://travis-ci.org/ApesofWrath/Scouter668.svg?branch=master)](https://travis-ci.org/ApesofWrath/Scouter668)
+[![Dependencies](https://david-dm.org/ApesofWrath/Scouter668.svg)](https://travis-ci.org/ApesofWrath/Scouter668)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Coverage](https://codecov.io/github/DaJuukes/Scouter668/coverage.svg?branch=master)](https://codecov.io/gh/DaJuukes/Scouter668)
+[![Coverage](https://codecov.io/github/ApesofWrath/Scouter668/coverage.svg?branch=master)](https://codecov.io/gh/ApesofWrath/Scouter668)
 
 [![Team](https://img.shields.io/badge/TEAM-668-BLUE.svg)](https://www.thebluealliance.com/team/668)
 

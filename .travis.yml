@@ -2,11 +2,8 @@ language: node_js
 node_js:
   - "10.13.0"
 services: mongodb
-install:
-  - npm install -g nyc codecov
 script:
-- npm run test
-- npm run report-coverage
+- npm run test && npm run report-coverage
 notifications:
   email:
     on_success: never

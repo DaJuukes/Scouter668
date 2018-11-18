@@ -1,25 +1,31 @@
-const express = require('express')
+const sinon = require('sinon')
+const rewire = require('rewire')
+
 module.exports = function (chai, server, models) {
   describe('Routes', () => {
     describe('Generic errors', () => {
       describe('During-route error', () => {
-        /* before(() => {
-          const router = express.Router()
-          router.get('errorTest', (req, res) => {
-            throw new Error()
-          })
-          server.use('/errorTest/', router)
-        })
-
         it('should catch the error thrown', (done) => {
-          chai.request(server)
-            .get('errorTest')
+          let stub = sinon.stub(console, 'log')
+          let newServer = rewire('../../src/app')
+          stub.restore()
+
+          let mock = sinon.mock(console)
+          mock.expects('error').once().withArgs('Error tester')
+
+          newServer.__set__('console', console)
+
+          chai.request(newServer)
+            .post('/errortest')
             .end((err, res) => {
-              console.log(err)
-              console.log(res)
+              mock.verify()
+              mock.restore()
+              if (err) console.error(err)
+              res.text.should.equal('Server error')
+              res.statusCode.should.equal(500)
               done()
             })
-        }) */
+        })
       })
     })
   })

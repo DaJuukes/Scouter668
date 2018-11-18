@@ -25,10 +25,10 @@ global.wrap = fn => (...args) => {
 }
 
 const errorMiddleware = (err, req, res, next) => {
-  console.error(err)
+  console.error(err.message)
   res.header('Access-Control-Allow-Origin', '*')
   res.status(500).send('Server error')
-  next()
+  next(err)
 }
 
 app.use(cors())

@@ -17,9 +17,9 @@ let s = {
 }
 
 s.schema.statics.validateData = function (team, author, text) {
-  if (isNaN(team) || team < 0 || team > 9999) return 'Invalid team number'
+  if (!team || isNaN(team) || team < 0 || team > 9999) return 'Invalid team number'
   else if (!author) return 'Invalid author'
-  else if (text.length < 1 || text.length > 5000) return 'Invalid text length'
+  else if (!text || text.length < 1 || text.length > 5000) return 'Invalid text length'
   else return null
 }
 

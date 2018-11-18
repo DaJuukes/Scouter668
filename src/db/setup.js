@@ -1,6 +1,4 @@
-const mongoose = require('mongoose')
-
-module.exports = () => {
+module.exports = (mongoose) => {
   let env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
   let dbName = 'data_' + process.env.DB_NAME + '_' + env
 

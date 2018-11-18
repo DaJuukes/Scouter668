@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config({ path: './env/.env' })
 
 const app = require('./src/app')
+const mongoose = require('mongoose')
 const setupDatabase = require('./src/db/setup')
 
 const runHttpServer = () => {
@@ -12,7 +13,7 @@ const runHttpServer = () => {
 }
 
 const main = async () => {
-  await setupDatabase()
+  await setupDatabase(mongoose)
   try {
     return runHttpServer()
   } catch (e) {

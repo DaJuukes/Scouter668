@@ -35,7 +35,7 @@ module.exports = function (chai, server, models) {
       it('should handle a promise rejeciton', (done) => {
         let stub1 = sinon.stub(console, 'log')
         const setupApp = rewire('../../src/app')
-        stub1.restore()
+
 
         let err = { stack: 'test' }
         let pe = 'test'
@@ -51,6 +51,7 @@ module.exports = function (chai, server, models) {
 
         mock.verify()
         mock.restore()
+        stub1.restore()
         done()
       })
     })
